@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Jaturat';
+  src: url('/fonts/jaturat-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jaturat';
+  src: url('/fonts/jaturat-semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Jaturat';
+  src: url('/fonts/jaturat-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
