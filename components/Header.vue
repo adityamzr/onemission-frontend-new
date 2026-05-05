@@ -3,7 +3,10 @@
     <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 md:h-28 h-20 md:mt-0 mt-4 flex items-center justify-between">
       <div class="flex items-center space-x-1">
         <!-- Logo -->
-        <NuxtLink to="/" class="px-6 py-0.5 rounded-full glassmorphism text-white text-4xl font-chakra-bold space-x-1.5">
+        <NuxtLink to="/" class="
+        sm:px-6 px-4 py-0.5 rounded-full glassmorphism text-white 
+        sm:text-4xl text-3xl font-chakra-bold 
+        sm:space-x-1.5 space-x-1">
           <span>O</span>
           <span>N</span>
           <span>E</span>
@@ -67,7 +70,7 @@
           <!-- MOBILE -->
           <div
             v-else
-            class="relative flex items-center justify-center w-20 h-12 px-4 rounded-full glassmorphism"
+            class="relative flex items-center justify-center w-20 sm:h-12 h-10 py-5 px-4 rounded-full glassmorphism"
           >
             <span
               class="absolute left-3.5 text-md font-semibold rounded-full h-6 w-6 flex items-center justify-center bg-white/90 text-black/90"
