@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen overflow-hidden bg-gradient-silver">
+  <div class="min-h-screen relative bg-gradient-silver">
     <!-- Noise Layer -->
     <div class="noise-layer"></div>
+    <!-- CONTENT -->
     <Header />
-    <main class="overflow-hidden">
+    <main class="relative">
       <slot />
     </main>
-    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -58,12 +58,11 @@ onMounted(() => {
 
 /* Noise layer */
 .noise-layer {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  background-image: url('../public/images/rice-paper-3.png'); /* pakai texture noise */
+  background-image: url('/images/rice-paper-3.png');
   opacity: 90%;
   mix-blend-mode: overlay;
   pointer-events: none;
-  z-index: 1;
 }
 </style>

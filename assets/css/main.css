@@ -92,7 +92,7 @@
 
 @layer components {
   .glassmorphism {
-    @apply bg-white/5 backdrop-blur-none border-2 border-x-0 border-white/50 shadow-lg shadow-black/20
+    @apply bg-white/20 backdrop-blur-none border-2 border-x-0 border-white/50 shadow-lg shadow-black/20
   }
 
   .fade-enter-active,

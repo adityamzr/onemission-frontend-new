@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['./assets/css/main.css', './assets/css/font.css'],
+
   app: {
     head: {
       title: 'OneMission - Values Matter',
@@ -20,9 +21,12 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   vite: {
     plugins: [
       tailwindcss(),
     ],
   },
+
+  modules: ['@pinia/nuxt'],
 })
