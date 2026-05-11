@@ -14,7 +14,6 @@
 import Header from '~/components/Header.vue'
 // import Footer from '~/components/Footer.vue'
 
-const bgEl = ref(null)
 const x = ref(50)
 const y = ref(50)
 let ticking = false
@@ -34,19 +33,24 @@ let ticking = false
 //   }
 // }
 
-// Set Background Color
+const bgEl = ref(null)
+const isReady = ref(false)
 let timeoutId = null
 
 const setColor = (color) => {
-  if (!bgEl.value) return
+  // 🔥 HARD GUARD (ini yang belum kamu punya)
+  if (!isReady.value || !bgEl.value) return
 
-  clearTimeout(timeoutId)
+  if (timeoutId) clearTimeout(timeoutId)
 
   document.documentElement.style.setProperty('--primary-color-next', color)
 
   bgEl.value.classList.add('is-transitioning')
 
   timeoutId = setTimeout(() => {
+    // 🔥 guard ulang (VERY IMPORTANT)
+    if (!isReady.value || !bgEl.value) return
+
     document.documentElement.style.setProperty('--primary-color', color)
     bgEl.value.classList.remove('is-transitioning')
   }, 600)
@@ -57,10 +61,13 @@ provide('setBgColor', setColor)
 onMounted(() => {
   // window.addEventListener('mousemove', handleMouseMove)
   document.documentElement.style.setProperty('--primary-color', '#2b7fff')
+  isReady.value = true
 })
 
 onUnmounted(() => {
   // window.removeEventListener('mousemove', handleMouseMove)
+  isReady.value = false
+  if (timeoutId) clearTimeout(timeoutId)
 })
 </script>
 

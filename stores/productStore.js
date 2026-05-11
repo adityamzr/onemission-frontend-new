@@ -10,6 +10,7 @@ export const useProductStore = defineStore("product", () => {
 
     try {
       const data = await productService.getProducts();
+      // console.log("Fetched products:", data);
       products.value = data;
     } catch (e) {
       console.error(e);

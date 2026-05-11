@@ -17,7 +17,7 @@
   </div>
 
   <!-- DESKTOP -->
-  <div v-else class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-y-32 p-6 md:pt-44">
+  <div v-else class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 md:gap-32 p-6 md:pt-44">
     <div
       v-for="item in products"
       :key="item.id"
@@ -143,7 +143,7 @@ function getRandomStyle(id) {
   if (!randomMap.has(id)) {
     randomMap.set(id, {
       x: (Math.random() - 0.5) * 40,
-      y: (Math.random() - 0.5) * 140,
+      y: (Math.random() - 0.5) * 160,
       scale: 0.85 + Math.random() * 0.3 // 0.85 - 1.15
     })
   }
