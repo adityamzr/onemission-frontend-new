@@ -7,7 +7,7 @@
         class="w-[90%] object-contain transition-all duration-300 ease-out cursor-pointer hover:scale-110"
         :style="style"
         @mouseenter="setBgColor(product.variant?.colorCode)"
-        @mouseleave="setBgColor('#2b7fff')"
+        @mouseleave="setBgColor('#2e4360')"
       />
     </NuxtLink>
 

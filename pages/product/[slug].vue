@@ -23,17 +23,17 @@
         ref="items"
         class="h-[57%] flex items-center justify-center snap-center"
       >
-        <img
-          :key="`${item}-${i}`"
-          :src="item"
-          :style="styles[i]"
-          class="w-[40%] max-w-125 object-contain"
-        />
+      <img
+        :key="`${item}-${i}`"
+        :src="item"
+        :style="styles[i]"
+        class="w-[40%] max-w-125 object-contain"
+      />
       </div>
     </div>
 
     <!-- 📦 RIGHT PANEL -->
-    <div class="absolute right-6 bottom-6 z-20 w-[320px]">
+    <div class="absolute right-6 bottom-6 mx-auto md:mx-6 z-20 w-[320px]">
       <div class="glassmorphism p-5 rounded-xl text-white">
         <h2 v-if="product && product.variant" class="text-lg md:text-xl font-bold mb-2">
           {{ product.name || product.variant.slug || 'No Name' }}
@@ -47,7 +47,7 @@
 
         <!-- COLOR -->
         <div class="my-4">
-          <p class="text-sm font opacity-60 mb-2">COLOR</p>
+          <p class="text-sm font opacity-60 mb-2">COLOR <span v-if="product?.variant?.color !== null">[ {{ product?.variant?.color }} ]</span></p>
           <div class="flex gap-2">
             <div
               v-if="product?.variant?.colorCode"
@@ -67,11 +67,11 @@
         </div>
 
         <!-- SIZE -->
-        <div class="mt-4 mb-2" v-if="product?.variant?.sizes">
-          <p class="text-sm opacity-60 mb-2">SIZE</p>
+        <div class="mt-4 mb-2" v-if="product?.variant?.sizes.length !== 0">
+          <p class="text-sm opacity-60 mb-2">SIZE <span v-if="selectedSize?.size">[ {{ selectedSize?.size }} ]</span></p>
           <div class="flex gap-2">
             <div 
-              v-for="(size, index) in product.variant.sizes"
+              v-for="(size, index) in product?.variant?.sizes"
               :key="index"
               class="relative w-fit rounded-md border border-white/30 py-1 px-3 flex gap-2 transition cursor-pointer"
               :class="{
@@ -115,6 +115,7 @@
               disabled:bg-white/20
               disabled:text-black/30"
         :class="btnAddDisabled ? 'justify-center' : 'justify-between'"
+        @click="addToCart()"
       >
         <span>
           {{ btnLabel }}
@@ -154,6 +155,7 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { useProductStore } from '@/stores/productStore'
+import { useCartStore } from '@/stores/cartStore'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/outline'
 import SizeGuide from '~/components/SizeGuide.vue'
 import {
@@ -178,6 +180,8 @@ const items = ref([])
 
 const styles = ref([])
 const itemHeight = ref(0)
+
+const cartStore = useCartStore()
 
 let isJumping = false
 let animationFrame = null
@@ -223,6 +227,20 @@ const btnLabel = computed(() => {
 
   return 'ADD TO CART'
 })
+
+// Add to cart
+function addToCart() {
+  cartStore.addToCart({
+    id: product.value.id,
+    variantId: product.value.variant.id,
+    name: product.value.name,
+    slug: product.value.variant.slug,
+    image:
+      product.value.variant.images[0],
+    size: selectedSize.value.size,
+    price: product.value.price
+  })
+}
 
 // 📏 Calculate real item height
 function calculateHeight() {

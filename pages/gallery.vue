@@ -1,7 +1,7 @@
 <template>
-  <div class="inset-0">
+  <div class="min-h-screen inset-0">
     <div v-for="gallery in galleries" :key="gallery.id">
-      <img class="w-full h-auto" :src="gallery.image_path" :alt="gallery.name" />
+      <img class="w-full h-auto object-cover" :src="gallery.image_path" :alt="gallery.name" />
     </div>
   </div>
 </template>
@@ -14,7 +14,6 @@ const galleries = computed(() => galleryStore.galleries);
 
 onMounted(() => {
   galleryStore.fetchGalleries();
-  console.log(galleryStore.galleries);
 })
 
 </script>

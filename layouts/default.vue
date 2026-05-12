@@ -7,11 +7,13 @@
     <main class="relative">
       <slot />
     </main>
+    <CartDrawer />
   </div>
 </template>
 
 <script setup>
 import Header from '~/components/Header.vue'
+import CartDrawer from '~/components/cart/CartDrawer.vue'
 // import Footer from '~/components/Footer.vue'
 
 const x = ref(50)
@@ -60,7 +62,7 @@ provide('setBgColor', setColor)
 
 onMounted(() => {
   // window.addEventListener('mousemove', handleMouseMove)
-  document.documentElement.style.setProperty('--primary-color', '#2b7fff')
+  document.documentElement.style.setProperty('--primary-color', '#2e4360')
   isReady.value = true
 })
 
@@ -93,14 +95,14 @@ onUnmounted(() => {
     
     radial-gradient(
       circle at 0% 90%,
-      rgba(211, 211, 211, 0.9),
-      rgba(159, 159, 159, 0.4) 50%,
-      rgba(96, 96, 96, 0.2) 100%,
-      rgba(0,0,0,0.9) 100%
+      rgba(234, 252, 254, 0.9),
+      rgba(188,207,221,0.4) 50%,
+      rgba(66,100,128,0.2) 100%,
+      rgba(46,67,96,0.9) 100%
     ),
     linear-gradient(
       135deg,
-      color-mix(in srgb, var(--primary-color) 80%, white),
+      color-mix(in srgb, var(--primary-color) 90%, white),
       color-mix(in srgb, var(--primary-color) 100%, transparent),
       color-mix(in srgb, var(--primary-color) 0%, black)
     );
@@ -115,14 +117,14 @@ onUnmounted(() => {
     
     radial-gradient(
       circle at 0% 90%,
-      rgba(189, 189, 189, 0.774),
-      rgba(200,200,200,0.4) 50%,
-      rgba(120,120,120,0.2) 100%,
-      rgba(0,0,0,0.9) 100%
+      rgba(234, 252, 254, 0.9),
+      rgba(188,207,221,0.4) 50%,
+      rgba(66,100,128,0.2) 100%,
+      rgba(46,67,96,0.9) 100%
     ),
     linear-gradient(
       135deg,
-      color-mix(in srgb, var(--primary-color-next, var(--primary-color)) 80%, white),
+      color-mix(in srgb, var(--primary-color-next, var(--primary-color)) 90%, white),
       color-mix(in srgb, var(--primary-color-next, var(--primary-color)) 100%, transparent),
       color-mix(in srgb, var(--primary-color-next, var(--primary-color)) 0%, black)
     );

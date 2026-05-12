@@ -91,7 +91,7 @@ export const productService = {
             id: 4,
             slug: "re-possessed-auralite-dusk",
             inStock: true,
-            color: null,
+            color: "Purple Dusk",
             colorCode: "#A78BB3",
             sizes: [
               {

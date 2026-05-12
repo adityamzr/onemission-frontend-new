@@ -32,9 +32,10 @@
           >
             <!-- COUNTER -->
             <span
-              class="absolute left-3.5 text-md font-semibold rounded-full h-6 w-6 flex items-center justify-center bg-white/90 text-black/90 z-10"
+              class="absolute cursor-pointer left-3.5 text-md font-semibold rounded-full h-6 w-6 flex items-center justify-center bg-white/90 text-black/90 z-10"
+              @click="cartStore.toggleCart()"
             >
-              2
+              {{ cartStore.cartCount }}
             </span>
 
             <!-- MENU -->
@@ -73,9 +74,10 @@
             class="relative flex items-center justify-center w-20 sm:h-12 h-10 py-5 px-4 rounded-full glassmorphism"
           >
             <span
-              class="absolute left-3.5 text-md font-semibold rounded-full h-6 w-6 flex items-center justify-center bg-white/90 text-black/90"
+              class="absolute cursor-pointer left-3.5 text-md font-semibold rounded-full h-6 w-6 flex items-center justify-center bg-white/90 text-black/90"
+              @click="cartStore.toggleCart()"
             >
-              2
+              {{ cartStore.cartCount }}
             </span>
 
             <div
@@ -121,11 +123,13 @@
 
 <script setup>  
 import { PlusIcon, XMarkIcon, ArrowLongRightIcon } from '@heroicons/vue/24/outline'
+import { useCartStore } from '~/stores/cartStore' 
 
 const isOpen = ref(false)
 const isModalOpen = ref(false)
-
 const { isMobile } = useDevice()
+
+const cartStore = useCartStore()
 
 const toggleMenu = () => {
   if (isMobile.value) {

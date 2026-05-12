@@ -8,6 +8,14 @@
 
 <script setup>
 // Global meta
+import { useCartStore } from '@/stores/cartStore'
+
+const cartStore = useCartStore()
+
+onMounted(() => {
+  cartStore.loadCart()
+})
+
 useHead({
   htmlAttrs: {
     lang: 'en'
